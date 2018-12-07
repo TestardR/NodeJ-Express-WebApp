@@ -18,7 +18,7 @@ app.use(
 );
 app.use(
   '/js',
-  express.static(path.join(__dirname, '/node_modules/jquery/dist'))
+  express.static(path.join(__dirname, '/node_modules/jquery/dist/'))
 );
 
 app.get('/', function(req, res) {
