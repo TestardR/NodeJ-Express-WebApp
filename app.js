@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  debug(`listening at port ${chalk.green('3000')}`);
+  debug(`listening on port ${chalk.green('3000')}`);
 });
 
 const config = {
@@ -27,6 +27,12 @@ sql.connect(config).catch((err) => {
   debug(err);
 });
 app.use(morgan('tiny'));
+
+app.use((req, res, next) => {
+  debug('my middleware');
+  next();
+});
+
 app.use(express.static(path.join(__dirname, '/public/')));
 app.use(
   '/css',
