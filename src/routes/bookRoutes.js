@@ -55,6 +55,13 @@ function router(nav) {
   //       read: false,
   //     },
   //   ];
+  bookRouter.use((req, res, next) => {
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  });
   bookRouter.route('/').get((req, res) => {
     const url = 'mongodb://localhost:27017';
     const dbName = 'libraryApp';
