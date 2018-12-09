@@ -9,7 +9,7 @@ function goodreadsService() {
     return new Promise((resolve, reject) => {
       axios
         .get(
-          'https://www.goodreads.com/book/show/656.xml?key=FR606c7GGZDafyVCxCVjoQ',
+          `https://www.goodreads.com/book/show/${id}.xml?key=FR606c7GGZDafyVCxCVjoQ`,
         )
         .then((response) => {
           parser.parseString(response.data, (err, result) => {
