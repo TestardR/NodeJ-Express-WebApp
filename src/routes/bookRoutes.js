@@ -1,5 +1,5 @@
 const express = require('express');
-
+const bookService = require('../services/goodreadsService');
 const bookController = require('../controllers/bookController');
 
 const bookRouter = express.Router();
@@ -56,7 +56,7 @@ function router(nav) {
   //     },
   //   ];
 
-  const { getIndex, getById, middleware } = bookController(nav);
+  const { getIndex, getById, middleware } = bookController(nav, bookService);
   bookRouter.use(middleware);
   bookRouter.route('/').get(getIndex);
 
